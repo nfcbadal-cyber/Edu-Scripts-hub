@@ -24,7 +24,7 @@
 
 ```lua
 -- 1. Load the library
-local Library = loadstring(game:HttpGet("YOUR_RAW_LINK_HERE"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/nfcbadal-cyber/Edu-Scripts-hub/refs/heads/main/Edu%20UI"))()
 
 -- 2. Create the main window
 local Window = Library:CreateWindow({
