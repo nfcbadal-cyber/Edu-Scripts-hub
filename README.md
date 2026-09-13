@@ -1,4 +1,4 @@
-# 🎨 Wand UI Library
+# 🎨 Edu UI Library
 
 > A lightweight, modern Roblox UI library for building script hubs — clean API, fast performance, and easy to use.
 
@@ -10,7 +10,7 @@
 
 ## 📖 About
 
-**Wand UI** is a rebuilt and optimized UI library designed for Roblox script hubs. It focuses on:
+**Edu UI** is a rebuilt and optimized UI library designed for Roblox script hubs. It focuses on:
 
 - ⚡ **Fast performance** — minimal overhead, low memory footprint
 - 🎨 **Modern design** — clean squircle elements, smooth tweens
