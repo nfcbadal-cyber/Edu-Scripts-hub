@@ -1,22 +1,23 @@
-# 🎨 Edu UI Library
+# 🎨 ModernUI Library
 
-> A lightweight, modern Roblox UI library for building script hubs — clean API, fast performance, and easy to use.
+> A lightweight, modern Roblox UI library for script hubs — with a draggable floating hexagon button, safe CoreGui parenting, and full mobile support.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Roblox](https://img.shields.io/badge/Roblox-Script-red.svg)](https://www.roblox.com/)
-[![Version](https://img.shields.io/badge/Version-1.0.0-green.svg)]()
+[![Version](https://img.shields.io/badge/Version-2.0.0-green.svg)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Roblox](https://img.shields.io/badge/Roblox-Executor-red.svg)]()
 
 ---
 
 ## 📖 About
 
-**Edu UI** is a rebuilt and optimized UI library designed for Roblox script hubs. It focuses on:
+**ModernUI** is a clean, executor-friendly UI library for building Roblox script hubs. It ships with:
 
-- ⚡ **Fast performance** — minimal overhead, low memory footprint
-- 🎨 **Modern design** — clean squircle elements, smooth tweens
-- 🔧 **Simple API** — intuitive method names, easy to learn
-- 🌓 **Themeable** — dark/light themes out of the box
-- 📱 **Mobile support** — works on touch devices
+- ⚡ **Fast performance** — minimal overhead, tween-based animations
+- 📱 **Mobile support** — sliders and buttons work on touch devices
+- 🎯 **Floating hexagon button** — restore minimized/hidden UI instantly
+- 🛡️ **Safe CoreGui fallback** — works on executors that restrict CoreGui
+- 🎨 **Accent color system** — fully themeable
+- 🔔 **Notification system** — stackable, auto-fading toasts
 
 ---
 
@@ -24,41 +25,31 @@
 
 ```lua
 -- 1. Load the library
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/nfcbadal-cyber/Edu-Scripts-hub/refs/heads/main/Edu%20UI"))()
+local Library = loadstring(game:HttpGet("YOUR_RAW_LINK_HERE"))()
 
--- 2. Create the main window
+-- 2. Create the window
 local Window = Library:CreateWindow({
-    Name    = "My Script",
-    Keybind = Enum.KeyCode.RightControl -- toggle UI with this key
+    Name           = "My Script",
+    Keybind        = Enum.KeyCode.RightControl,
+    Accent         = Color3.fromRGB(90, 70, 220),
+    FloatingButton = true
 })
 
 -- 3. Create a tab
 local Tab = Window:CreateTab("Main")
 
--- 4. Create a section inside the tab
+-- 4. Create a section
 local Section = Tab:CreateSection("Example")
 
 -- 5. Add elements
-Section:CreateParagraph("This is a paragraph / description text.")
-
-Section:CreateToggle("Enable Something", function(value)
-    print("Toggle:", value)
+Section:CreateParagraph("This is a paragraph.")
+Section:CreateToggle("Enable Feature", false, function(state)
+    print("Toggle:", state)
 end)
-
-Section:CreateSlider("WalkSpeed", 16, 200, 16, function(value)
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+Section:CreateButton("Click Me", function()
+    Window:Notify({
+        Title = "Success",
+        Content = "Button clicked!",
+        Duration = 3
+    })
 end)
-
-Section:CreateDropdown("Choose Mode", {"Normal", "Fast", "Insane"}, function(option)
-    print("Selected:", option)
-end)
-
-Section:CreateTextbox("Enter username...", function(text)
-    print("Textbox:", text)
-end)
-
-Section:CreateButton("Kill All", function()
-    print("Button clicked!")
-end)
-
-Section:CreateLabel("This is a small label")
